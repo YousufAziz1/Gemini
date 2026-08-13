@@ -1,0 +1,17 @@
+{
+  "name": "localboost",
+  "version": "1.0.0",
+  "private": true,
+  "description": "LocalBoost - the digital agency for local small businesses, operated entirely by AI agents",
+  "type": "module",
+  "scripts": {
+    "install:all": "npm --prefix server install && npm --prefix client install",
+    "server": "npm --prefix server run dev",
+    "client": "npm --prefix client run dev",
+    "dev": "node scripts/dev.mjs",
+    "start": "node server/src/index.js"
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  }
+}
