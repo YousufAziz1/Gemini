@@ -29,14 +29,17 @@ LocalBoost has two parts that must be deployed separately:
 ## 2) Frontend deploy (Vercel — free tier)
 
 1. Go to <https://vercel.com> → **Add New… → Project** → import the GitHub repo `YousufAziz1/Gemini`.
-2. Vercel auto-reads `vercel.json` at the repo root:
-   - **Root Directory:** `client`
-   - **Framework Preset:** Vite
+   - Do NOT use the "import suggestions" quick-import link — it rejects `rootDirectory`.
+2. On the **Configure Project** page:
+   - **Root Directory:** select `client` (dropdown auto-detects the sub-project)
+   - **Framework Preset:** Vite (auto-detected from `client/vercel.json`)
    - **Build Command:** `npm run build`
    - **Output Directory:** `dist`
-3. Add **Environment Variable** (Project → Settings → Environment Variables):
+3. Add **Environment Variable** (Environment Variables → Add):
    - `VITE_API_URL=https://<your-backend-on-render>.onrender.com`
-4. Deploy → your app is live at `https://<your-app>.vercel.app`.
+4. Click **Deploy** → your app is live at `https://<your-app>.vercel.app`.
+
+> If the project was already created by the failed import: open Project → **Settings → General → Root Directory**, set `client`, then trigger **Deployments → Redeploy**. Or delete the project and re-import via **Add New → Project**.
 
 ## 3) Post-deploy checks
 
