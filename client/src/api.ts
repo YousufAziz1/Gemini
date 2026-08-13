@@ -9,6 +9,8 @@ import type {
   StatusInfo,
 } from "./types";
 
+const BASE = import.meta.env.VITE_API_URL ?? "";
+
 async function req<T>(url: string, init?: RequestInit): Promise<T> {
   const res = await fetch(url, {
     headers: { "Content-Type": "application/json" },
@@ -19,35 +21,35 @@ async function req<T>(url: string, init?: RequestInit): Promise<T> {
 }
 
 export const api = {
-  status: () => req<StatusInfo>("/api/status"),
-  clients: () => req<Client[]>("/api/clients"),
+  status: () => req<StatusInfo>(`${BASE}/api/status`),
+  clients: () => req<Client[]>(`${BASE}/api/clients`),
   dashboard: (clientId?: string) =>
-    req<DashboardData>(`/api/dashboard${clientId ? `?client_id=${clientId}` : ""}`),
-  content: (clientId: string) => req<ContentPost[]>(`/api/content?client_id=${clientId}`),
-  tickets: (clientId: string) => req<Ticket[]>(`/api/tickets?client_id=${clientId}`),
-  invoices: (clientId: string) => req<Invoice[]>(`/api/invoices?client_id=${clientId}`),
-  reports: (clientId: string) => req<Report[]>(`/api/reports?client_id=${clientId}`),
-  events: (limit = 60) => req<AgentEvent[]>(`/api/events?limit=${limit}`),
-  runCycle: () => req<{ runId: string; status: string; summary: string[] }>("/api/agents/run", { method: "POST" }),
+    req<DashboardData>(`${BASE}/api/dashboard${clientId ? `?client_id=${clientId}` : ""}`),
+  content: (clientId: string) => req<ContentPost[]>(`${BASE}/api/content?client_id=${clientId}`),
+  tickets: (clientId: string) => req<Ticket[]>(`${BASE}/api/tickets?client_id=${clientId}`),
+  invoices: (clientId: string) => req<Invoice[]>(`${BASE}/api/invoices?client_id=${clientId}`),
+  reports: (clientId: string) => req<Report[]>(`${BASE}/api/reports?client_id=${clientId}`),
+  events: (limit = 60) => req<AgentEvent[]>(`${BASE}/api/events?limit=${limit}`),
+  runCycle: () => req<{ runId: string; status: string; summary: string[] }>(`${BASE}/api/agents/run`, { method: "POST" }),
   runTask: (clientId: string, task: string) =>
-    req<{ runId: string; result: number }>("/api/agents/task", {
+    req<{ runId: string; result: number }>(`${BASE}/api/agents/task`, {
       method: "POST",
       body: JSON.stringify({ client_id: clientId, task }),
     }),
   onboard: (name: string, industry: string, location: string) =>
-    req<Client>("/api/agents/onboard", {
+    req<Client>(`${BASE}/api/agents/onboard`, {
       method: "POST",
       body: JSON.stringify({ name, industry, location }),
     }),
   sendTicket: (clientId: string, customer: string, message: string) =>
-    req<{ ticketId: string; response: string }>("/api/tickets", {
+    req<{ ticketId: string; response: string }>(`${BASE}/api/tickets`, {
       method: "POST",
       body: JSON.stringify({ client_id: clientId, customer, message }),
     }),
 };
 
 export function openEventStream(onEvent: (ev: AgentEvent) => void): () => void {
-  const es = new EventSource("/api/events/stream");
+  const es = new EventSource(`${BASE}/api/events/stream`);
   es.onmessage = (msg) => {
     try {
       onEvent(JSON.parse(msg.data));

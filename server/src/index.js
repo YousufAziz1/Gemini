@@ -12,6 +12,15 @@ import { isLive, currentModel } from "./agents/llm.js";
 const app = express();
 app.use(express.json());
 
+const CORS = process.env.CORS_ORIGIN || "*";
+app.use((req, res, next) => {
+  res.setHeader("Access-Control-Allow-Origin", CORS);
+  res.setHeader("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+  if (req.method === "OPTIONS") return res.sendStatus(204);
+  next();
+});
+
 seedIfEmpty();
 
 const PORT = process.env.PORT || 8080;
