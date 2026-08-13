@@ -1,6 +1,6 @@
 const API_KEY = process.env.USER_GEMINI_API_KEY || process.env.GEMINI_API_KEY || "";
 const BASE_URL = process.env.USER_GEMINI_BASE_URL || "https://generativelanguage.googleapis.com/v1beta";
-const MODEL = process.env.USER_GEMINI_MODEL || "gemini-2.0-flash";
+const MODEL = process.env.USER_GEMINI_MODEL || "gemini-3.6-flash";
 
 export function isLive() {
   return !!API_KEY;

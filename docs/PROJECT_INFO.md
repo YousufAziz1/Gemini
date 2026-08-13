@@ -8,7 +8,7 @@
 | Category | Small Business Services |
 | Product | LocalBoost — digital agency operated entirely by AI agents |
 | Pricing | $499/mo per client |
-| Google Cloud products | Gemini API (`gemini-2.0-flash`, generative language REST endpoint) |
+| Google Cloud products | Gemini API (`gemini-3.6-flash`, generative language REST endpoint) |
 | Stack | Node.js + Express, node:sqlite, SSE, Vite + React + TypeScript + Recharts |
 | AI engine | Orchestrator + 6 specialist agents; live Gemini with deterministic simulation fallback |
 

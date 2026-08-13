@@ -40,7 +40,7 @@ server/   Node.js + Express + node:sqlite
   events.js  SQLite-backed execution log + Server-Sent-Events broadcast
 ```
 
-- **Google Cloud:** Gemini API (`gemini-2.0-flash`) via the generative language REST endpoint.
+- **Google Cloud:** Gemini API (`gemini-3.6-flash`) via the generative language REST endpoint.
 - **Live agent stream:** every agent action is persisted to SQLite and streamed to the dashboard
   over SSE, so the "AI in production" evidence is real-time and auditable.
 - **Simulation mode:** if no API key is present, a deterministic simulation engine keeps the full

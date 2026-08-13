@@ -44,7 +44,7 @@ Every one of these actions is a real agent execution in production. Each is logg
 execution ledger and streamed live to the client dashboard, so "AI in production" is not a claim on
 a slide — it is the running product, observable second by second. In simulation mode the same system
 runs on a deterministic engine so the product is demoable anywhere; the moment a Gemini API key is
-presented, the identical code paths execute on `gemini-2.0-flash` and every event is tagged
+presented, the identical code paths execute on `gemini-3.6-flash` and every event is tagged
 `[live Gemini]`.
 
 ## What humans do
