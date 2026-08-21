@@ -4,7 +4,7 @@
 > A real business operated by AI agents: content, social, support, analytics and billing run 24/7
 > by seven Gemini-powered agents — with no account managers, no project managers, no sales team.
 
-**Live demo:** https://5173-3d8c7bc68c8ac3ff.monkeycode-ai.live
+
 
 ---
 
